@@ -1,5 +1,6 @@
 package org.iesfm.bank.pojos;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -9,25 +10,21 @@ import java.util.Objects;
 public class Customer {
     @Id
     @GeneratedValue
-    private int id;
+    private Integer id;
+    @Column (unique = true, nullable = false)
     private String nif;
+    @Column (nullable = false)
     private String name;
+    @Column (nullable = false)
     private String surname;
+    @Column (nullable = false)
     private int cp;
 
-    public Customer(int id, String nif, String name, String surname, int cp) {
-        this.id = id;
-        this.nif = nif;
-        this.name = name;
-        this.surname = surname;
-        this.cp = cp;
-    }
-
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -68,7 +65,7 @@ public class Customer {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Customer customer = (Customer) o;
-        return id == customer.id && cp == customer.cp && Objects.equals(nif, customer.nif) && Objects.equals(name, customer.name) && Objects.equals(surname, customer.surname);
+        return cp == customer.cp && Objects.equals(id, customer.id) && Objects.equals(nif, customer.nif) && Objects.equals(name, customer.name) && Objects.equals(surname, customer.surname);
     }
 
     @Override

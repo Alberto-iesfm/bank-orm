@@ -9,22 +9,15 @@ import java.util.Objects;
 public class Account {
     @Id
     private String iban;
-    @Column (name = "owner_id")
+    @Column (name = "owner_id", nullable = false)
     private int ownerId;
+    @Column (nullable = false)
     private double balance;
-    @Column (name = "open_date")
+    @Column (name = "open_date", nullable = false)
     private Date openDate;
     @OneToMany
     @JoinColumn(name = "iban", referencedColumnName = "iban")
     private List<Movement> movements;
-
-    public Account(String iban, int ownerId, double balance, Date openDate, List<Movement> movements) {
-        this.iban = iban;
-        this.ownerId = ownerId;
-        this.balance = balance;
-        this.openDate = openDate;
-        this.movements = movements;
-    }
 
     public String getIban() {
         return iban;

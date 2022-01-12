@@ -11,26 +11,18 @@ import java.util.Objects;
 public class Movement {
     @Id
     @GeneratedValue
-    private int id;
+    private Integer id;
     private String iban;
     @Column(name = "movement_date")
     private Date movementDate;
     private double amount;
     private String description;
 
-    public Movement(int id, String iban, Date movementDate, double amount, String description) {
-        this.id = id;
-        this.iban = iban;
-        this.movementDate = movementDate;
-        this.amount = amount;
-        this.description = description;
-    }
-
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -71,7 +63,7 @@ public class Movement {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Movement movement = (Movement) o;
-        return id == movement.id && Double.compare(movement.amount, amount) == 0 && Objects.equals(iban, movement.iban) && Objects.equals(movementDate, movement.movementDate) && Objects.equals(description, movement.description);
+        return Double.compare(movement.amount, amount) == 0 && Objects.equals(id, movement.id) && Objects.equals(iban, movement.iban) && Objects.equals(movementDate, movement.movementDate) && Objects.equals(description, movement.description);
     }
 
     @Override
