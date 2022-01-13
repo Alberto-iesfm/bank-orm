@@ -3,6 +3,7 @@ package org.iesfm.bank.controllers;
 import org.iesfm.bank.pojos.Account;
 import org.iesfm.bank.pojos.Customer;
 import org.iesfm.bank.repository.AccountRepository;
+import org.iesfm.bank.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +18,8 @@ public class AccountController {
 
     @Autowired
     private AccountRepository accountRepository;
+    @Autowired
+    private CustomerRepository customerRepository;
 
     @RequestMapping(method = RequestMethod.GET, path = "/accounts")
     public List<Account> list() {
@@ -38,7 +41,24 @@ public class AccountController {
         Optional<Account> customer = accountRepository.findByIban(iban);
 
         return customer.orElseThrow(
-                () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "La cuanta no existe")
+                () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "La cuenta no existe")
         );
+    }
+
+    @RequestMapping(method = RequestMethod.POST, path = "/customers/{nif}/accounts")
+    public void insertAccount (@PathVariable("nif") String nif, @RequestBody Account account){
+        if (customerRepository.existsByNif(nif)){
+            if (accountRepository.existsById(account.getIban())){
+                throw new ResponseStatusException(
+                        HttpStatus.CONFLICT, "La cuenta ya existe"
+                );
+            } else {
+                accountRepository.save(account);
+            }
+        } else {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "El cliente no existe"
+            );
+        }
     }
 }
