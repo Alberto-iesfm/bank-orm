@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
+// mirar collections tables
+
 @Entity
 public class Account {
     @Id
