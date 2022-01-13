@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
-// mirar collections tables
+// mirar collections tables shopORM Mikel
 
 @Entity
 public class Account {
