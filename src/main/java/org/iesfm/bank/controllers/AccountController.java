@@ -61,4 +61,11 @@ public class AccountController {
             );
         }
     }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/customers/{nif}/accounts")
+    public List<Account> list(
+            @PathVariable("nif") String customerNif
+    ) {
+        return accountRepository.findByNif(customerNif);
+    }
 }
