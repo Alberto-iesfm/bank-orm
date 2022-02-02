@@ -63,4 +63,19 @@
         </dependency>
     </dependencies>
 
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub OWNER Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/Alberto-iesfm/bank-orm</url>
+        </repository>
+    </distributionManagement>
+
+    <scm>
+        <url>https://github.com/Alberto-iesfm/bank-orm</url>
+        <connection>scm:git:git://github.com/Alberto-iesfm/bank-orm.git</connection>
+        <developerConnection>scm:git:git@github.com:Alberto-iesfm/bank-orm.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
 </project>
