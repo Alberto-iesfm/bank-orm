@@ -4,7 +4,7 @@
 
     <groupId>org.example</groupId>
     <artifactId>bank-orm</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.1</version>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -73,7 +73,7 @@
         <url>https://github.com/Alberto-iesfm/bank-orm</url>
         <connection>scm:git:git://github.com/Alberto-iesfm/bank-orm.git</connection>
         <developerConnection>scm:git:git@github.com:Alberto-iesfm/bank-orm.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>bank-orm-1.1</tag>
     </scm>
 
 </project>
